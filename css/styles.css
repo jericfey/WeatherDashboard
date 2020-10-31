@@ -1,0 +1,24 @@
+.navbar-center {
+    color: white;
+    position: sticky;
+    left: 50%;
+    transform: translatex(-50%);
+}
+.input-group.md-form.form-sm.form-1 input{
+  border: 1px solid #bdbdbd;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+
+.has-search .form-control-feedback {
+    position: static;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
