@@ -41,24 +41,42 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-4">
+        <!-- <div class="col-4"> -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading"><h3>Search for City:</h3></div>
           <!-- Search bar -->
-          <H3>Search for City: </H3>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Search this blog"
-          />
-          <div class="input-group-append">
+          <!-- <h3>Search for City:</h3> -->
+          <div class="flex">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter City Name"
+            />
             <button class="btn btn-secondary" type="button">
               <i class="fa fa-search"></i>
             </button>
+            
           </div>
+          <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">City Name</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">City Name</a>
+        </div>
+        </div>
         </div>
         <!-- Today's Weather Card -->
-        <div class="col-8"></div>
+        <div class="col-8">
+          <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+        </div>
 
-        <!-- 5 Day Forcast cards -->
+        <!-- 5 Day Forecast cards -->
         <div class="col-8"></div>
       </div>
     </div>
