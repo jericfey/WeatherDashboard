@@ -97,7 +97,7 @@ $(document).ready(function () {
       var weatherImage = $("<img>");
       var weatherDesc = $("<span>");
       var weatherCard = $("#temp");
-      var temp = $("<span>");
+      // var temp = $("<span>");
       var temperature = data.main.temp;
       var humidity = data.main.humidity;
       var wind = data.wind.speed;
@@ -130,3 +130,5 @@ $(document).ready(function () {
   $("#search").on("click", newCity);
   // $("#city-name").on("click", displayWeather);
 });
+
+//lat, lon, and uv are not updating on local storage
