@@ -35,7 +35,7 @@ $(document).ready(function () {
     var cityInput = localStorage.getItem("city");
 
     //Store lat/lon coordinates for selected city to local storage
-    var requestUrlLatLon = "http://ip-api.com/json/?city=" + cityInput;
+    var requestUrlLatLon = "https://ip-api.com/json/?city=" + cityInput;
     $.ajax({
       url: requestUrlLatLon,
       method: "GET",
@@ -50,7 +50,7 @@ $(document).ready(function () {
     var lat = localStorage.getItem("lat");
     var lon = localStorage.getItem("lon");
     var requestUrlUv =
-      "http://api.openweathermap.org/data/2.5/uvi?appid=3976a448c3612fdae22654b75c5eca9a&lat=" +
+      "https://api.openweathermap.org/data/2.5/uvi?appid=3976a448c3612fdae22654b75c5eca9a&lat=" +
       lat +
       "&lon=" +
       lon;
@@ -88,7 +88,7 @@ $(document).ready(function () {
 
       //create icons
       var iconCode = data.weather[0].icon;
-      var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
+      var iconURL = "https://openweathermap.org/img/w/" + iconCode + ".png";
 
       //VARIABLES
 
