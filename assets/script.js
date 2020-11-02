@@ -9,10 +9,9 @@ $(document).ready(function () {
     // console.log("The city name has been saved." + cityInput);
     //generate button with city name
     $("#city-list").append(
-      '<button class="list-group-item list-group-item-action bg-light" id=""></button>'
+      `<button class="list-group-item list-group-item-action bg-light" id="${cityInput}">${cityInput}</button>`
     );
-    $(this).prop("id", cityInput);
-    $(this).prop("value", cityInput);
+
     // $("#city-list").append(
     //   $(document.createElement("button")).prop({
     //     type: "button",
