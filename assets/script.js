@@ -5,63 +5,26 @@ $(document).ready(function () {
   //FUNCTIONS
 
   var newCity = function () {
-    //get input info
+    //get input from user into variable
     var cityInput = $("#city-input").val();
-    //Store data
+
+    //Store data from input into local storage
     localStorage.setItem("city", cityInput);
-    // console.log("The city name has been saved." + cityInput);
+
     //generate button with city name
     $("#city-list").append(
       `<button class="list-group-item list-group-item-action bg-light" id="city-name" value="${cityInput}">${cityInput}</button>`
     );
-    //Clear input field
+    //Clear input field after click
     $("#city-input").val("");
 
     //Call the function to display Weather for that city
-    displayWeather();
+    getWeather();
   };
 
-  var displayWeather = function () {
-    //show cards once city has been entered
-    $("#weather-cards").show();
-    //clear div before start
-    // $("#city-title").empty();
-    $("#temp").empty();
-
-    //Trying to call value from button pushed
-    // alert($(this).attr("value"));
-
+  var getWeather = function () {
     //call city from local storage
     var cityInput = localStorage.getItem("city");
-
-    //Store lat/lon coordinates for selected city to local storage
-    var requestUrlLatLon = "https://ip-api.com/json/?city=" + cityInput;
-    $.ajax({
-      url: requestUrlLatLon,
-      method: "GET",
-    }).then(function (data) {
-      // console.log(lat);
-      // console.log(lon);
-      localStorage.setItem("lat", data.lat);
-      localStorage.setItem("lon", data.lon);
-    });
-
-    //Get UV index and save to local storage
-    var lat = localStorage.getItem("lat");
-    var lon = localStorage.getItem("lon");
-    var requestUrlUv =
-      "https://api.openweathermap.org/data/2.5/uvi?appid=3976a448c3612fdae22654b75c5eca9a&lat=" +
-      lat +
-      "&lon=" +
-      lon;
-    // console.log(requestUrlUv);
-    $.ajax({
-      url: requestUrlUv,
-      method: "GET",
-    }).then(function (data) {
-      // console.log(data.value);
-      localStorage.setItem("uv", data.value);
-    });
 
     //Add city input into API request url
     var requestURL =
@@ -98,12 +61,36 @@ $(document).ready(function () {
       var weatherDesc = $("<span>");
       var weatherCard = $("#temp");
       // var temp = $("<span>");
-      var temperature = data.main.temp;
-      var humidity = data.main.humidity;
-      var wind = data.wind.speed;
+      var temperature = localStorage.setItem("temp", data.main.temp);
+      var humidity = localStorage.setItem("humidity", data.main.humidity);
+      var wind = localStorage.setItem("wind", data.wind.speed);
+      var lat = localStorage.setItem("lat", data.coord.lat);
+      var lon = localStorage.setItem("lon", data.coord.lon);
+      //Get UV index and save to local storage
+      var lat = localStorage.getItem("lat");
+      var lon = localStorage.getItem("lon");
+      var requestUrlUv =
+        "https://api.openweathermap.org/data/2.5/uvi?appid=3976a448c3612fdae22654b75c5eca9a&lat=" +
+        lat +
+        "&lon=" +
+        lon;
+      // console.log(requestUrlUv);
+      $.ajax({
+        url: requestUrlUv,
+        method: "GET",
+      }).then(function (data) {
+        // console.log(data.value);
+        localStorage.setItem("uv", data.value);
+      });
+
+      //show cards once city has been entered
+      $("#weather-cards").show();
+      //clear div before start
+      $("#city-title").empty();
+      $("#temp").empty();
       var uv = localStorage.getItem("uv");
 
-      //get data into element created above
+      //get data into html element
       cityName.text(data.name);
       weatherDesc.text(data.weather[0].description);
       // temp.text(data.main.temp);
@@ -120,15 +107,16 @@ $(document).ready(function () {
       weatherCard.append(`Humidity: ${humidity} % <br>`);
       weatherCard.append(`Wind Speed: ${wind} MPH <br>`);
       weatherCard.append(`UV Index: ${uv}`);
-
-      // $("#city-title").css("display", "inline-block");
     });
   };
 
+  var clickedCity = function () {
+    console.log("This was clicked");
+  };
   //EVENT LISTENERS
   //Event listener for city input on click
   $("#search").on("click", newCity);
-  // $("#city-name").on("click", displayWeather);
+  $("#city-name").on("click", clickedCity);
 });
 
-//lat, lon, and uv are not updating on local storage
+//Cannot get on click function to work for button id="city-name"
