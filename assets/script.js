@@ -111,8 +111,13 @@ $(document).ready(function () {
   };
 
   var clickedCity = function () {
-    console.log("This was clicked");
+    console.log("city button was clicked");
   };
+
+  // var fiveDayForecast = function () {
+  //   // console.log("testing function");
+  //   console.log(cityInput);
+  // };
   //EVENT LISTENERS
   //Event listener for city input on click
   $("#search").on("click", newCity);
@@ -120,3 +125,4 @@ $(document).ready(function () {
 });
 
 //Cannot get on click function to work for button id="city-name"
+//fields are showing up as undefined and not sure why
